@@ -6,3 +6,5 @@ export { default as EditCampusFormContainer } from "./EditCampusFormContainer";
 export { default as NavBarContainer } from "./NavBarContainer";
 export { default as StudentNameListContainer } from "./StudentNameListContainer";
 export { default as AddStudentToCampusContainer } from "./AddStudentToCampusContainer";
+export { default as AllStudentsNameListContainer } from "./AllStudentsNameListContainer";
+export { default as StudentContainer } from "./StudentContainer";

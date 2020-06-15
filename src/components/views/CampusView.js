@@ -7,6 +7,7 @@ import {
 } from "../containers";
 
 const CampusView = (props) => {
+  //console.log(props.campus.students);
   return (
     <>
       <img src={props.campus.imageUrl} alt={props.campus.name} />
