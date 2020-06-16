@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllStudentsThunk } from "../../thunks";
+import { fetchAllStudentsThunk, deleteStudentThunk } from "../../thunks";
 import { AllStudentsView } from "../views";
 
 // Smart container;
@@ -10,16 +10,16 @@ class AllStudentsNameListContainer extends Component {
     this.props.fetchAllStudents();
   }
 
-//   handleDelete = (id) => {
-//     this.props.deleteCampus(id);
-//   };
+  handleDelete = (id) => {
+    this.props.deleteStudent(id);
+  };
 
   render() {
     return (
       <AllStudentsView
         allStudents={this.props.allStudents}
         // hello={this.props.hello}
-        // handleDelete={this.handleDelete}
+        handleDelete={this.handleDelete}
       />
     );
   }
@@ -37,7 +37,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
-    //deleteCampus: (id) => dispatch(deleteCampusThunk(id)),
+    deleteStudent: (id) => dispatch(deleteStudentThunk(id)),
   };
 };
 
@@ -45,7 +45,7 @@ const mapDispatch = (dispatch) => {
 AllStudentsNameListContainer.propTypes = {
   allStudents: PropTypes.array.isRequired,
   fetchAllStudents: PropTypes.func.isRequired,
-//   deleteCampus: PropTypes.func.isRequired,
+  deleteStudent: PropTypes.func.isRequired,
 };
 
 // Export our store-connected container by default;

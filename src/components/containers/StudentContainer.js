@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchStudentThunk } from "../../thunks";
+import { fetchStudentThunk, deleteStudentThunk } from "../../thunks";
 import PropTypes from "prop-types";
 import { StudentView } from "../views";
 
@@ -9,10 +9,10 @@ class StudentContainer extends Component {
     this.props.fetchStudent(this.props.match.params.id);
   }
 
-//   handleDelete = (id) => {
-//     this.props.deleteCampus(id);
-//     this.props.history.push("/campuses");
-//   };
+  handleDelete = (id) => {
+    this.props.deleteStudent(id);
+    this.props.history.push("/students");
+  };
 
 //   handleEnrollStudent = (campusId, studentId) => {
 //     this.props.enrollStudent(campusId, studentId);
@@ -23,6 +23,7 @@ class StudentContainer extends Component {
     return (
       <StudentView
         student={this.props.student}
+        handleDelete={this.handleDelete}
       />
     );
   }
@@ -38,7 +39,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchStudent: (id) => dispatch(fetchStudentThunk(id)),
-    // deleteCampus: (id) => dispatch(deleteCampusThunk(id)),
+    deleteStudent: (id) => dispatch(deleteStudentThunk(id)),
     // enrollStudent: (campusId, studentId) =>
     //   dispatch(enrollStudentThunk(campusId, studentId)),
   };
@@ -48,7 +49,7 @@ const mapDispatch = (dispatch) => {
 StudentContainer.propTypes = {
     student: PropTypes.object.isRequired,
     fetchStudent: PropTypes.func.isRequired,
-  //   deleteCampus: PropTypes.func.isRequired,
+    deleteStudent: PropTypes.func.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(StudentContainer);

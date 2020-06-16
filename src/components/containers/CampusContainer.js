@@ -4,6 +4,7 @@ import {
   fetchCampusThunk,
   deleteCampusThunk,
   enrollStudentThunk,
+  //fetchStudentThunk
 } from "../../thunks";
 
 import { CampusView } from "../views";
@@ -19,7 +20,10 @@ class CampusContainer extends Component {
   };
 
   handleEnrollStudent = (campusId, studentId) => {
+    const id = this.props.match.params.id
     this.props.enrollStudent(campusId, studentId);
+    this.props.history.push(`/campuses/${id}`);
+    
   };
 
   render() {
@@ -43,6 +47,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
+    //fetchStudent:(id) => dispatch(fetchStudentThunk(id)),
     deleteCampus: (id) => dispatch(deleteCampusThunk(id)),
     enrollStudent: (campusId, studentId) =>
       dispatch(enrollStudentThunk(campusId, studentId)),
