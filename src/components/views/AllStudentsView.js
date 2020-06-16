@@ -10,6 +10,9 @@ const AllStudentsView = (props) => {
 
   return (
     <div className="all-students">
+       <Link to="/students/new" className="add-student">
+        New Student
+      </Link>
       <div>
         {props.allStudents.map((student) => (
           <div key={student.id}>
@@ -18,9 +21,9 @@ const AllStudentsView = (props) => {
             </Link>
             {/* <img src={campus.imageUrl} width="200px" alt={campus.name} />
             <p>{campus.students.length} students</p> */}
-            {/* <button onClick={() => props.handleDelete(campus.id)}>
+            <button onClick={() => props.handleDelete(student.id)}>
               Delete
-            </button> */}
+            </button>
           </div>
         ))}
       </div>

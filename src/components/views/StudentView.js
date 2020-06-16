@@ -32,9 +32,12 @@ const StudentView = (props) => {
       <Link to={`/campuses/${id}/`}>
         <p>Compus: {hasCompus}</p>
       </Link>
-      {/* <button onClick={() => props.handleDelete(props.campus.id)}>
+      <button onClick={() => props.handleDelete(props.student.id)}>
         Delete
-      </button> */}
+      </button>
+      <Link className="edit-link" to={`/students/${props.student.id}/edit`}>
+        Edit
+      </Link>
     </>
   );
 };
